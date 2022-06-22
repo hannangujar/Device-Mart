@@ -1,0 +1,11 @@
+<%= paginator.render do -%>
+  <nav class="pagination">
+    <%= first_page_tag unless current_page.first? %>
+    <%= prev_page_tag unless current_page.first? %>
+    <%= "#{current_page} of #{total_pages}" %>
+    <% unless current_page.out_of_range? %>
+      <%= next_page_tag unless current_page.last? %>
+      <%= last_page_tag unless current_page.last? %>
+    <% end %>
+  </nav>
+<% end -%>

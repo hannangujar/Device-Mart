@@ -1,0 +1,7 @@
+<div class="product">
+        <%= link_to image_tag( product.image_path), product_path(product) %>
+    <ul>
+        <h5><%= product.name %></h5>
+        <li class="price"> <strong> <%= "Price #{product.price}" %></strong> </li>
+    </ul> 
+</div>
