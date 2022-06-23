@@ -38,4 +38,3 @@ for url in urls
         image_path: product[:image_path])
     end
 end
-

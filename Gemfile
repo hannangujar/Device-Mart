@@ -81,4 +81,5 @@ end
 gem 'will_paginate', '~> 3.3'
 gem 'kaminari'
 gem 'nokogiri', '~> 1.13', '>= 1.13.6'  
-gem 'bootstrap', '~> 5.1.3'
+gem 'bootstrap', '~> 5.0.0-beta1'
+gem "devise", "~> 4.8.1"

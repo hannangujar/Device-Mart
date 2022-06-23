@@ -1,11 +1,19 @@
 <%= paginator.render do -%>
-  <nav class="pagination">
-    <%= first_page_tag unless current_page.first? %>
-    <%= prev_page_tag unless current_page.first? %>
-    <%= "#{current_page} of #{total_pages}" %>
+ <nav aria-label="...">
+  <ul class="pagination">
+    <li class="page-item disabled">
+      <span class="page-link"><%= first_page_tag unless current_page.first? %></span>
+    </li>
+    <li class="page-item"><%= prev_page_tag unless current_page.first? %></li>
+    <li class="page-item active" aria-current="page">
+      <span class="page-link"><%= "#{current_page} of #{total_pages}" %></span>
+    </li>
     <% unless current_page.out_of_range? %>
-      <%= next_page_tag unless current_page.last? %>
+    <li class="page-item"> <%= next_page_tag unless current_page.last? %></li>
+    <li class="page-item">
       <%= last_page_tag unless current_page.last? %>
-    <% end %>
-  </nav>
-<% end -%>
+    </li>
+  </ul>
+  <% end %>
+</nav>
+<% end %>
