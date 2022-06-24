@@ -1,3 +1,9 @@
 <p style="color: green"></p>
 
 <%= render @product %>
+
+Comments:
+  <% @product.reviews.each do |review| %>
+    <%= link_to review.user.email, user_path(review.user) %> said
+    <%= review.content %>
+  <% end %>

@@ -1,0 +1,5 @@
+<h2><%= @user.email %> </h2> has commented on the following posts:
+
+<% @user.product.each do |product| %>
+  <%= link_to product.name, product_path(product) %>
+<% end %>

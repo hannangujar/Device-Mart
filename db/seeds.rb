@@ -38,3 +38,12 @@ for url in urls
         image_path: product[:image_path])
     end
 end
+100.times do 
+    User.create(email: Faker::Internet.email,
+                password: Faker::Internet.password)
+end
+100.times do 
+    Review.create(user_id: rand(0..99),
+                  product_id: rand(0..84),  
+                  content:  Faker::Lorem.paragraphs)
+end
