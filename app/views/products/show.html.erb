@@ -1,9 +1,21 @@
 <p style="color: green"></p>
 
-<%= render @product %>
+ 
+<%= link_to "New Review",
+                  new_review_path,
+                  data: { turbo_frame: "second_frame" },
+                  class: "btn btn-success" %> <br>
 
-Comments:
+<%= turbo_frame_tag "products" do %>
+  <%= render @product %>
+<% end %>
+  <%= turbo_frame_tag Review.new %>
+</main>
+Review by our Trusted Users:
   <% @product.reviews.each do |review| %>
-    <%= link_to review.user.email, user_path(review.user) %> said
+    <%= link_to review.user.email, user_path(review.user) %>  <br>
     <%= review.content %>
+    <%# <%= link_to "Edit this review", edit_review_path(@review) %> 
+    <%= button_to "Destroy this review", @review, method: :delete %>
+    <%= link_to "Back to reviews", reviews_path %>
   <% end %>

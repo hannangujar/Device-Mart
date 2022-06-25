@@ -1,0 +1,15 @@
+<%# Step 1: remove the form from the reviews#index page %>
+<%= turbo_stream.update Review.new, "" %>
+
+<%# Step 2: add the date at the right place %>
+<% if previous_date = @review.previous_date %>
+  <%= turbo_stream.after previous_date do %>
+    <%= render @review, product: @product %>
+  <% end %>
+<% else %>
+  <%= turbo_stream.prepend "review" do %>
+    <%= render @review, product: @product %>
+  <% end %>
+<% end %>
+
+<%= render_turbo_stream_flash_messages %>

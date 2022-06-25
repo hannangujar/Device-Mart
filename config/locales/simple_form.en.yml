@@ -1,0 +1,14 @@
+en:
+  simple_form:
+    placeholders:
+      Review:
+        name: Name of your Review
+    labels:
+      Reviews:
+        name: Name
+
+  helpers:
+    submit:
+      review:
+        create: Create review
+        update: Update review

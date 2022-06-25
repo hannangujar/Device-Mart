@@ -1,15 +1,9 @@
-
 <%= form_tag products_path method="get" do %>
   <%= select_tag :id, options_for_select(Company.all.collect { |p| [ p.name, p.id ] }), include_blank: true %>
     <%= submit_tag 'Filter' %>
 <% end %>
 <div class="products">
 <h1>Products</h1>
-<% if user_signed_in? %>
-    <%= link_to "Products", products_path, class: "btn btn--dark" %>
-  <% else %>
-    <%= link_to "Sign in", new_user_session_path, class: "btn btn--dark" %>
-  <% end %>
 <main class="card">
     <%= render @products %>  
 </main>

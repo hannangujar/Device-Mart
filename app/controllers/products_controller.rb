@@ -1,6 +1,10 @@
 class ProductsController < ApplicationController
     def index
-        @products = Product.page params[:page]
+        if params[:search]
+            @products = Product.where("name ILIKE ?", "%"+params[:search]+"%").page params[:page]
+        else
+            @products = Product.page params[:page]
+        end
     end
 
     def create
@@ -15,12 +19,14 @@ class ProductsController < ApplicationController
         end
     end
     def show
-        @product = Product.find(params[:id])    
+        @product = Product.find(params[:id]) 
+        @reviews =  Review.find(params[:id])
     end
+    
 
 
     private
     def product_params
-        params.require(:product).permit(:name, :title, :discription, :price, pictures: [])
+        params.require(:product).permit(:name,:search, :title, :discription, :price, pictures: [])
     end
 end

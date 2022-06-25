@@ -1,9 +1,17 @@
 Rails.application.routes.draw do
-  resources :reviews
+  get 'pages/home'
   devise_for :users
+  resources :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
-   root "products#index"
+   root "pages#home"
+  resources :companies
   resources :products
+  resources :reviews do
+    resources :products
+  end
+  resources :products do
+    resources :reviews, except: [:index, :show]
+  end
 end

@@ -78,8 +78,10 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+gem "simple_form"
 gem 'will_paginate', '~> 3.3'
 gem 'kaminari'
 gem 'nokogiri', '~> 1.13', '>= 1.13.6'  
 gem 'bootstrap', '~> 5.0.0-beta1'
 gem "devise", "~> 4.8.1"
+gem 'redis-rails'
