@@ -1,7 +1,14 @@
-<%= simple_form_for [product, review], html: { class: "form review" } do |f| %>
-  <%= form_error_notification(review) %>
+<%# <%= simple_form_for [product, review], html: { class: "form review" } do |f| %>
+  <%# <%= form_error_notification(review) %> 
 
-  <%= f.input :date, html5: true, input_html: { autofocus: true } %>
-  <%= link_to "Cancel", product_path(product), class: "btn btn--light" %>
-  <%= f.submit class: "btn btn--secondary" %>
-<% end %>
+  <%# <%= f.input :date, html5: true, input_html: { autofocus: true } %> 
+  <%# <%= link_to "Cancel", product_path(product), class: "btn btn--light" %> 
+  <%# <%= f.submit class: "btn btn--secondary" %> 
+<%# <% end %>
+
+<form action= "<%= product_reviews_path(product) %>">
+ <input type="hidden" name= "aythenticity_token" >
+ <textarea name="review[contnet]"> </textarea>
+
+ <input type="submit" value="Submit">
+ </form>

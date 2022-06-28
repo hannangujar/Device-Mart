@@ -1,22 +1,5 @@
-<%= turbo_frame_tag review do %>
-<div class="review">
-  <div class="review__header">
-    <h2 class="review__title">
-      <%= link_to review.user.email,
-                reviews_path(review),
-                data: { turbo_frame: "_top" } %>
-    </h2>
-
-    <%# <div class="review__actions">
-      <%= button_to "Delete",
-              product_review_path(product, review),
-              method: :delete,
-              form: { content: { turbo_confirm: "Are you sure?" } },
-              class: "btn btn--light" %>
-      <%# <%= link_to "Edit", %>
-                  <%# # [:edit, product, review], %>
-                  <%# # class: "btn btn--light" %> 
-    <%# </div> %> 
-  </div>
-</div>
-<% end %>
+<article>
+    <p><%= review.content %></p>
+    <strong>by: </strong><small><%= review.user.email %></small>
+</article>
+<hr />

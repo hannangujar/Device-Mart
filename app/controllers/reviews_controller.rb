@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
-  # before_action :set_product
-  before_action :set_review, only: [:edit, :update, :destroy]
+  before_action :set_product
+  before_action :set_review, only: [:edit, :update, :destroy, :create]
 
   
   def new
@@ -8,7 +8,7 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @review = @product.reviews.build(review_params)
+    @review = current_user.reviews.new()
 
     if @review.save
       respond_to do |format|
@@ -50,10 +50,12 @@ class ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:content)
+    params.require(:review)
+          .permit(:content)
+          .merge(product_id: params[:product_id])
   end
 
-  # def set_product
-    # @product = current_product.reviews.find(params[:product_id])
-  # end
+   def set_product
+     @review = Product.find(params[:id])
+   end
 end

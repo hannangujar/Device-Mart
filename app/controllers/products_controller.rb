@@ -20,7 +20,6 @@ class ProductsController < ApplicationController
     end
     def show
         @product = Product.find(params[:id]) 
-        @reviews =  Review.find(params[:id])
     end
     
 

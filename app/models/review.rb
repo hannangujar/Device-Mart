@@ -1,6 +1,4 @@
 class Review < ApplicationRecord
-    belongs_to :user
-    belongs_to :product
-    scope :ordered, -> { order(id: :desc) }
-    broadcasts_to ->(review) { [review.product, "reviews"] }, inserts_by: :prepend
+  belongs_to :product
+  belongs_to :user
 end
