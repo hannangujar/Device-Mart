@@ -5,10 +5,17 @@ class ProductsController < ApplicationController
         else
             @products = Product.page params[:page]
         end
-    end
 
+        if params[:company_id]
+            @company = Company.includes(:products)
+                                .find(params[:company_id])
+            @products = @company.products
+          else
+            @product = Product.all
+          end
+    end
     def create
-        product_params = params.require(:product).permit(:name, :title, :discription, :price, pictures: [])
+        product_params = params.require(:product).permit(:name,:search, :title, :discription, :price, pictures: [])
         @product = Product.create(product_params)
 
         if @product.valid?
@@ -26,6 +33,6 @@ class ProductsController < ApplicationController
 
     private
     def product_params
-        params.require(:product).permit(:name,:search, :title, :discription, :price, pictures: [])
+        params.require(:product).permit(:name,:search, :company_id, :title, :discription, :price, pictures: [])
     end
 end

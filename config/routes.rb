@@ -6,10 +6,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
    root "pages#home"
-  resources :companies
-  resources :products
-  resources :reviews do
-    resources :products
+  resources :companies, only: nil do
+    resources :products, only: :index
   end
   resources :products do
     resources :reviews, only: [:create]
